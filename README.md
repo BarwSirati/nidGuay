@@ -27,5 +27,5 @@ yarn dev
 yarn start
 ```
 
-##### ***<div align="right">&diams; Created By BXDMAN || Bourbxn &diams;</div>***
+##### ***<div align="right">&diams; Created By BXDMAN && Bourbxn &diams;</div>***
 
