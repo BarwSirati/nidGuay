@@ -73,5 +73,4 @@ jobs:
       - name: Build with Next.js 🔨
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: PM2 🟢
-        run: |
-          pm2 start yarn --name frontend -- start
+        run: bash ./run.sh
