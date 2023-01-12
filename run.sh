@@ -1,9 +1,9 @@
 #!/bin/bash
-pm2 describe frontend > /dev/null
-RUNNING=$?
-
-if [ "${RUNNING}" -ne 0 ]; then
-  pm2 start yarn --name frontend -- start
-else
-  pm2 restart frontend
-fi;
+if [ ! "$(docker ps -a -q -f name=nextjs)" ]; then
+    if [ "$(docker ps -aq -f status=exited -f name=nextjs)" ]; then
+        # cleanup
+        docker-compose up -d --build
+    fi
+    # run your container
+    docker-compose up -d
+fi
