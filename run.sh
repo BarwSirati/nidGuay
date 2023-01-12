@@ -1,6 +1,6 @@
 #!/bin/bash
-if [ ! "$(docker ps -a -q -f name=nidguay_app_frontend)" ]; then
-    docker-compose up -d
+if [ $( docker ps -a | grep nidguay_app_frontend | wc -l ) -gt 0 ]; then
+  docker-compose up -d --build
 else
-    docker-compose up -d --build
+  docker-compose up -d
 fi
