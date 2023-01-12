@@ -29,7 +29,9 @@ const login = () => {
           </button>
         </div>
         <div>
-          <a className=" text-slate-600" href="/register">Don't have an account? Sign Up</a>
+          <Link className=" text-slate-600" href="/register">
+            Don&apos;t have an account? Sign Up
+          </Link>
         </div>
       </div>
     </div>
