@@ -21,8 +21,13 @@ const login = () => {
             className="w-full rounded-lg px-4 py-3 focus: outline-[#A0C3D2]"
           />
         </div>
+        <div className="pb-4 ">
+          <button className="w-full h-16 rounded-lg bg-[#EAC7C7] text-2xl font-semibold text-gray-600 hover:bg-[#EFC7C7]">
+            Submit
+          </button>
+        </div>
         <div>
-          <button className="w-full h-16 rounded-lg bg-[#EAC7C7]" />
+          <button className=" text-cyan-700">Don't have an account? Sign Up</button>
         </div>
       </div>
     </div>
