@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const login = () => {
   return (
     <div className="hero min-h-screen bg-[#F7F5EB]">
@@ -21,8 +23,15 @@ const login = () => {
             className="w-full rounded-lg px-4 py-3 focus: outline-[#A0C3D2]"
           />
         </div>
+        <div className="pb-4 ">
+          <button className="w-full h-16 rounded-lg bg-[#EAC7C7] text-2xl font-semibold text-gray-600 hover:bg-[#EFC7C7]">
+            Submit
+          </button>
+        </div>
         <div>
-          <button className="w-full h-16 rounded-lg bg-[#EAC7C7]" />
+          <Link className=" text-slate-600" href="/register">
+            Don&apos;t have an account? Sign Up
+          </Link>
         </div>
       </div>
     </div>

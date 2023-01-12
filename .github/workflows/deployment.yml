@@ -28,3 +28,6 @@ jobs:
      
       - name: PM2 🟢
         run: bash ./run.sh
+
+      - name: Message ✉️
+        run: bash ./discord.sh
