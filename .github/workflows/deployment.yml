@@ -10,18 +10,16 @@ on:
     branches: ["dev"]
 
 jobs:
-  # Lints Job
-  clone:
+  pre-repo:
     name: Clone
     runs-on: self-hosted
     steps:
       - name: Clone Repo ⬇️
         uses: actions/checkout@v2
 
-  # Build job
   build:
     runs-on: self-hosted
-    needs: [clone]
+    needs: [pre-repo]
     steps:
       - name: Checkout ✔️
         uses: actions/checkout@v3
