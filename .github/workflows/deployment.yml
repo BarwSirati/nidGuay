@@ -11,7 +11,7 @@ on:
 
 jobs:
   # Lints Job
-  lintTest:
+  clone:
     name: Clone
     runs-on: self-hosted
     steps:
@@ -28,3 +28,10 @@ jobs:
      
       - name: PM2 🟢
         run: bash ./run.sh
+
+  message:
+    runs-on: self-hosted
+    needs: [build]
+    steps:
+      - name: Send Message ✉️
+        uses: bash ./discord.sh
