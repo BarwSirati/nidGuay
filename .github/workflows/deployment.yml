@@ -12,7 +12,7 @@ on:
 jobs:
   # Lints Job
   lintTest:
-    name: Lint
+    name: Clone
     runs-on: self-hosted
     steps:
       - name: Clone Repo ⬇️
