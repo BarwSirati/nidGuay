@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const login = () => {
   return (
     <div className="hero min-h-screen bg-[#F7F5EB]">
@@ -27,7 +29,7 @@ const login = () => {
           </button>
         </div>
         <div>
-          <button className=" text-cyan-700">Don't have an account? Sign Up</button>
+          <a className=" text-slate-600" href="/register">Don't have an account? Sign Up</a>
         </div>
       </div>
     </div>
