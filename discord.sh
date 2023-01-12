@@ -4,7 +4,6 @@ discord_url="https://discordapp.com/api/webhooks/1063101954403876954/shBizhj_Dm4
 generate_post_data() {
   cat <<EOF
 {
-  "content": "Hello! World!",
   "embeds": [{
     "title": "Preview [Frontend]",
     "url": "https://nidguay.bxdman.com",
@@ -17,5 +16,4 @@ EOF
 
 # POST request to Discord Webhook
 curl -H "Content-Type: application/json" -X POST -d "$(generate_post_data)" $discord_url
-@BarwSirati
  
