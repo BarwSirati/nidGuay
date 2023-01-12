@@ -4,6 +4,7 @@ discord_url="https://discordapp.com/api/webhooks/1063101954403876954/shBizhj_Dm4
 generate_post_data() {
   cat <<EOF
 {
+  "content": "เว็บบิ้วเสร็จแล้วนิน้องจ้าวเข้าแลได้เลยย",
   "embeds": [{
     "title": "Preview [Frontend]",
     "url": "https://nidguay.bxdman.com",
