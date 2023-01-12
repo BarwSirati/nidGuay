@@ -1,41 +1,55 @@
 import Link from "next/link";
-
-const login = () => {
+import Input from "../components/Input";
+import Image from "next/image";
+const Login: React.FC = () => {
   return (
-    <div className="hero min-h-screen bg-[#F7F5EB]">
-      <div className="w-1/2 h-4/5 bg-[#EAE0DA] rounded-xl py-11 px-20">
-        <h1 className="text-5xl pb-14 font-semibold flex justify-center">
-          Sign in
-        </h1>
-        <h2 className="text-2xl font-semibold pb-2">Username</h2>
-        <div className="pb-6">
-          <input
-            type="text"
-            placeholder="Enter username"
-            className="w-full rounded-lg px-4 py-3 focus: outline-[#A0C3D2]"
+    <div className="flex flex-col justify-center items-center px-4 space-y-8 min-h-screen bg-orange-400">
+      <h1 className="text-3xl font-semibold">ระบบคิดคำนวณหน่วยกิต</h1>
+      <div className="flex overflow-hidden flex-row w-full max-w-5xl rounded-2xl shadow">
+        <div className="hidden flex-col flex-auto items-center p-8 space-y-10 bg-orange-300 md:flex">
+          <div className="flex flex-row items-center self-start"></div>
+          <Image
+            src={"/images/loginLogo.svg"}
+            alt="access-account"
+            width={2}
+            height={2}
+            className="w-80"
           />
+          <div className="text-sm font-medium text-center">
+            <p>คณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์</p>
+            <p>สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+          </div>
         </div>
-        <h2 className="text-2xl font-semibold pb-2">Password</h2>
-        <div className="pb-10">
-          <input
-            type="text"
-            placeholder="Enter password"
-            className="w-full rounded-lg px-4 py-3 focus: outline-[#A0C3D2]"
-          />
-        </div>
-        <div className="pb-4 ">
-          <button className="w-full h-16 rounded-lg bg-[#EAC7C7] text-2xl font-semibold text-gray-600 hover:bg-[#EFC7C7]">
-            Submit
-          </button>
-        </div>
-        <div>
-          <Link className=" text-slate-600" href="/register">
-            Don&apos;t have an account? Sign Up
-          </Link>
+        <div className="flex flex-col flex-auto p-8 bg-white divide-y divide-gray-200">
+          <div className="pb-4 space-y-2">
+            <div className="text-3xl font-semibold">ลงชื่อเข้าสู่ระบบ</div>
+            <div className="text-base font-medium">
+              ยังไม่มีบัญชีผู้ใช้งาน?
+              <Link href="register" className="ml-1 text-orange-600">
+                สมัครสมาชิก
+              </Link>
+            </div>
+          </div>
+          <form className="pt-4 space-y-8 text-lg font-medium">
+            <div>
+              รหัสนักศึกษา
+              <Input type="text" placeholder="รหัสนักศึกษา" />
+            </div>
+            <div>
+              รหัสผ่าน
+              <Input type="password" placeholder="รหัสผ่าน" />
+            </div>
+            <button
+              type="submit"
+              className="py-4 px-16 w-full text-black text-white bg-orange-500 rounded-xl hover:border-transparent"
+            >
+              เข้าสู่ระบบ
+            </button>
+          </form>
         </div>
       </div>
     </div>
   );
 };
 
-export default login;
+export default Login;

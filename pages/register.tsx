@@ -1,4 +1,4 @@
-const register = () => {
+const Register = () => {
   return (
     <div className="hero min-h-screen bg-[#F7F5EB]">
       <div className="w-1/2 h-4/5 bg-[#EAE0DA] rounded-xl py-11 px-20">
@@ -10,4 +10,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;
