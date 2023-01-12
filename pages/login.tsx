@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Input from "../components/Input";
 import Image from "next/image";
+
 const Login: React.FC = () => {
   return (
     <div className="flex flex-col justify-center items-center px-4 space-y-8 min-h-screen bg-orange-400">
@@ -22,15 +23,11 @@ const Login: React.FC = () => {
         </div>
         <div className="flex flex-col flex-auto p-8 bg-white divide-y divide-gray-200">
           <div className="pb-4 space-y-2">
-            <div className="text-3xl font-semibold">ลงชื่อเข้าสู่ระบบ</div>
-            <div className="text-base font-medium">
-              ยังไม่มีบัญชีผู้ใช้งาน?
-              <Link href="register" className="ml-1 text-orange-600">
-                สมัครสมาชิก
-              </Link>
+            <div className="text-3xl font-semibold text-center">
+              ลงชื่อเข้าสู่ระบบ
             </div>
           </div>
-          <form className="pt-4 space-y-8 text-lg font-medium">
+          <form className="pt-4 space-y-5 text-lg font-medium">
             <div>
               รหัสนักศึกษา
               <Input type="text" placeholder="รหัสนักศึกษา" />
@@ -41,10 +38,16 @@ const Login: React.FC = () => {
             </div>
             <button
               type="submit"
-              className="py-4 px-16 w-full text-black text-white bg-orange-500 rounded-xl hover:border-transparent"
+              className="py-4 px-16 w-full text-white bg-orange-500 rounded-xl hover:border-transparent"
             >
               เข้าสู่ระบบ
             </button>
+            <div className="text-base font-medium text-center">
+              ยังไม่มีบัญชีผู้ใช้งาน?
+              <Link href="register" className="ml-1 text-orange-600">
+                สมัครสมาชิก
+              </Link>
+            </div>
           </form>
         </div>
       </div>
