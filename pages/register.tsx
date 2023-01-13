@@ -104,7 +104,7 @@ const Register: React.FC<Props> = ({ facultys, branchs }) => {
         <div className="text-3xl font-semibold text-center">สมัครสมาชิก</div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-8 text-lg font-medium"
+          className="space-y-2 text-lg font-medium"
         >
           <div className="grid gap-4 lg:grid-cols-3">
             <div className="w-full">
