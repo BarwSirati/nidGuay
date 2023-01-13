@@ -28,7 +28,7 @@ const Register: React.FC = () => {
   };
   return (
     <div className="flex flex-col justify-center items-center p-4 space-y-8 min-h-screen bg-orange-400">
-      <div className="flex flex-col p-8 space-y-10 w-full max-w-5xl bg-white rounded-2xl shadow">
+      <div className="flex flex-col p-8 space-y-10 w-full bg-white rounded-2xl shadow max-w-md">
         <div className="text-3xl font-semibold text-center">
           Register สมัครสมาชิก
         </div>
@@ -36,7 +36,7 @@ const Register: React.FC = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-8 text-lg font-medium"
         >
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4 grid-cols">
             <div className="w-full">
               <label htmlFor="">รหัสนักศึกษา</label>
               <Input
