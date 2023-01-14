@@ -8,9 +8,11 @@ import { GetServerSideProps } from "next";
 import { Faculty } from "../types/faculty.type";
 import { Branch } from "../types/branch.type";
 import { Credit } from "../types/credit.type";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 interface FormRegister {
-  username: string;
+  id: string;
   name: string;
   lastname: string;
   password: string;
@@ -35,7 +37,7 @@ interface Props {
 }
 
 const schema = yup.object().shape({
-  username: yup
+  id: yup
     .string()
     .length(8, "กรุณากรอกรหัสนักศึกษาให้ครบ")
     .required("กรุณากรอกรหัสนักศึกษา"),
@@ -43,7 +45,7 @@ const schema = yup.object().shape({
   lastname: yup.string().required("กรุณากรอกนามสกุล"),
   password: yup
     .string()
-    .length(8, "กรุณากรอกรหัสผ่านขั้นต่ำ 8 ตัว")
+    .min(8, "กรุณากรอกรหัสผ่านขั้นต่ำ 8 ตัว")
     .required("กรุณากรอกรหัสผ่าน"),
 
   facultyId: yup
@@ -88,6 +90,8 @@ const schema = yup.object().shape({
 });
 
 const Register: React.FC<Props> = ({ facultys, branchs }) => {
+  const [errorText, setErrorText] = useState("");
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -96,12 +100,43 @@ const Register: React.FC<Props> = ({ facultys, branchs }) => {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data: FormRegister) => {
-    console.log(data);
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND}/auth/register`,
+        data
+      );
+      if (res.status === 201) {
+        router.push("/login");
+      }
+    } catch (err) {
+      setErrorText("มีรหัสนักศึกษานี้ในระบบแล้ว")
+    }
   };
   return (
     <div className="flex flex-col justify-center items-center p-4 space-y-8 min-h-screen bg-orange-400">
       <div className="flex flex-col p-8 space-y-10 w-full bg-white rounded-2xl shadow max-w-5xl">
         <div className="text-3xl font-semibold text-center">สมัครสมาชิก</div>
+        {errorText !== "" && (
+          <div className="alert alert-error shadow-lg">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current flex-shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>{errorText}</span>
+            </div>
+          </div>
+        )}
+
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-2 text-lg font-medium"
@@ -112,11 +147,11 @@ const Register: React.FC<Props> = ({ facultys, branchs }) => {
               <Input
                 type="text"
                 placeholder="รหัสนักศึกษา"
-                register={register("username", { required: true })}
+                register={register("id", { required: true })}
               />
-              {errors.username && (
+              {errors.id && (
                 <p className="text-base font-semibold text-red-500">
-                  * {errors.username.message}
+                  * {errors.id.message}
                 </p>
               )}
             </div>
