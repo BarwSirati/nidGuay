@@ -6,7 +6,7 @@ type Props = {
 };
 const Stat: React.FC<Props> = ({ name, percent, total, color }) => {
   return (
-    <div className={`stats shadow text-white ${color}`}>
+    <div className={`stats shadow text-white ${color} p-3`}>
       <div className="stat">
         <div className="font-semibold">{name}</div>
         <div className="stat-value">{percent} %</div>
