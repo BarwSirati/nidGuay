@@ -5,12 +5,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
-import { setCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 import { ImGithub } from "react-icons/im";
 import { useState } from "react";
 import { BiError } from "react-icons/bi";
+import { GetServerSideProps } from "next";
 
 interface FormLogin {
   username: string;
@@ -177,6 +178,22 @@ const Login: React.FC = () => {
       </div>
     </Fragment>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const checkToken = getCookie("token", { req, res });
+  if (checkToken) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+      props: {},
+    };
+  }
+  return {
+    props: {},
+  };
 };
 
 export default Login;

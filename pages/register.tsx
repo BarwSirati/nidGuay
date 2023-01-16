@@ -10,6 +10,7 @@ import { Branch } from "../types/branch.type";
 import { Credit } from "../types/credit.type";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { getCookie } from "cookies-next";
 
 interface FormRegister {
   id: string;
@@ -358,6 +359,16 @@ const Register: React.FC<Props> = ({ facultys, branchs }) => {
   );
 };
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const checkToken = getCookie("token", { req, res });
+  if (checkToken) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+      props: {},
+    };
+  }
   const fetchFaculty = await axios.get(
     `${process.env.NEXT_PUBLIC_BACKEND}/faculty`
   );
