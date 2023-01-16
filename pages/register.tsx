@@ -1,4 +1,4 @@
-import Input from "../components/Input";
+import Input from "../components/InputRegister";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -109,33 +109,13 @@ const Register: React.FC<Props> = ({ facultys, branchs }) => {
         router.push("/login");
       }
     } catch (err) {
-      setErrorText("มีรหัสนักศึกษานี้ในระบบแล้ว")
+      setErrorText("มีรหัสนักศึกษานี้ในระบบแล้ว");
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center p-4 space-y-8 min-h-screen bg-orange-400">
+    <div className="flex flex-col justify-center items-center p-4 space-y-8 md:min-h-screen bg-orange-400">
       <div className="flex flex-col p-8 space-y-10 w-full bg-white rounded-2xl shadow max-w-5xl">
         <div className="text-3xl font-semibold text-center">สมัครสมาชิก</div>
-        {errorText !== "" && (
-          <div className="alert alert-error shadow-lg">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current flex-shrink-0 h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>{errorText}</span>
-            </div>
-          </div>
-        )}
 
         <form
           onSubmit={handleSubmit(onSubmit)}

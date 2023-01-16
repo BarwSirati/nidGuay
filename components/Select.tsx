@@ -8,7 +8,7 @@ const Select: React.FC<Props> = ({ options, register }) => {
   return (
     <select
       {...register}
-      className="p-4 w-full bg-gray-100 rounded-xl border transition-colors focus:bg-white focus:outline-none"
+      className="md:p-2 p-4 w-full bg-gray-100 rounded-xl border transition-colors focus:bg-white focus:outline-none"
     >
       {options.map(({ name, value }) => (
         <option value={value} key={value}>
