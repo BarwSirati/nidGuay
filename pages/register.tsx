@@ -113,7 +113,7 @@ const Register: React.FC<Props> = ({ facultys, branchs }) => {
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center p-4 space-y-8 md:min-h-screen bg-orange-400">
+    <div className="flex flex-col justify-center items-center p-4 space-y-8 lg:min-h-screen bg-orange-400">
       <div className="flex flex-col p-8 space-y-10 w-full bg-white rounded-2xl shadow max-w-5xl">
         <div className="text-3xl font-semibold text-center">สมัครสมาชิก</div>
 
