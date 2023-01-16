@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.app-layout {
+  @apply w-screen h-screen flex flex-col;
+}
+
 * {
   font-family: "Prompt", sans-serif;
 }
