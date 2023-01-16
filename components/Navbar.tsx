@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 const Navbar = () => {
   const router = useRouter();
   return (
-    <div className="navbar bg-orange-500 text-white">
+    <div className="navbar bg-orange-500 text-white py-3">
       <div className="flex-1">
         <a className="btn btn-ghost normal-case text-xl">
           ระบบคิดคำนวณหน่วยกิต

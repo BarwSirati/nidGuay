@@ -13,10 +13,24 @@ const Home: React.FC<Prop> = ({ token, userId }) => {
   return (
     <Layout>
       <div className="w-full p-8">
-        <div className="space-x-5 flex justify-center">
+        <div className="md:space-x-10 space-y-2 md:space-y-0 flex justify-center flex-col md:flex-row">
           <Stat
             color="bg-red-500"
             name="หมวดวิชาศึกษาทั่วไป"
+            percent="21.58"
+            total="12/50"
+          />
+
+          <Stat
+            color="bg-purple-600"
+            name="หมวดวิชาเฉพาะ"
+            percent="21.58"
+            total="12/50"
+          />
+
+          <Stat
+            color="bg-green-600"
+            name="หมวดวิชาเลือกเสรี"
             percent="21.58"
             total="12/50"
           />
