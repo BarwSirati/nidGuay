@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Input from "../components/Input";
+import Input from "../components/InputLogin";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,6 +9,8 @@ import { setCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 import { ImGithub } from "react-icons/im";
+import { useState } from "react";
+import { BiError } from "react-icons/bi";
 
 interface FormLogin {
   username: string;
@@ -21,6 +23,7 @@ const schema = yup.object().shape({
 });
 
 const Login: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -30,18 +33,22 @@ const Login: React.FC = () => {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data: FormLogin) => {
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND}/auth/login`,
-      data
-    );
-    if (res.status === 201) {
-      setCookie("token", res.data.access_token[0], {
-        maxAge: 7 * 24 * 60 * 60,
-        path: "/",
-        sameSite: "strict",
-        secure: true,
-      });
-      router.push("/");
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND}/auth/login`,
+        data
+      );
+      if (res.status === 201) {
+        setCookie("token", res.data.access_token[0], {
+          maxAge: 7 * 24 * 60 * 60,
+          path: "/",
+          sameSite: "strict",
+          secure: true,
+        });
+        router.push("/");
+      }
+    } catch (err) {
+      setIsOpen(true);
     }
   };
   return (
@@ -127,8 +134,9 @@ const Login: React.FC = () => {
         <div className="modal-box">
           <h3 className="font-bold text-lg text-center">รายละเอียดระบบ</h3>
           <p className="py-4">
-            ระบบนี้ไม่เกี่ยวข้องกับทางสถาบันหรือระบบของทางสำนักทะเบียน เป็นระบบที่นักศึกษาวิศวกรรมศาสตร์
-            สาขาคอมพิวเตอร์ กลุ่มนึง ที่ขี้เกียจคิดคำนวณหน่วยกิตทีได้เรียนมา
+            ระบบนี้ไม่เกี่ยวข้องกับทางสถาบันหรือระบบของทางสำนักทะเบียน
+            เป็นระบบที่นักศึกษาวิศวกรรมศาสตร์ สาขาคอมพิวเตอร์ กลุ่มนึง
+            ที่ขี้เกียจคิดคำนวณหน่วยกิตทีได้เรียนมา
             จึงได้รวมตัวและทำระบบนี้ขึ้นมา
           </p>
           <a
@@ -142,6 +150,28 @@ const Login: React.FC = () => {
             <label htmlFor="my-modal" className="btn btn-error text-white">
               close
             </label>
+          </div>
+        </div>
+      </div>
+
+      <div className={`modal ${isOpen ? "modal-open" : ""}`} id="my-modal-2">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg space-x-5 flex justify-center text-red-500">
+            <BiError className="text-2xl" /> Fail To Login
+          </h3>
+          <p className="pt-5 text-center font-semibold">
+            Try Again !!! <br />
+            <span>Username or Password is wrong </span>
+          </p>
+          <div className="modal-action">
+            <button
+              className="btn btn-error text-white"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
